@@ -1,0 +1,31 @@
+import java.util.List;
+
+public class Pedido {
+    private String cliente;
+    private List<Item> itens;
+    private boolean pago;
+
+    public Pedido(String cliente, List<Item> itens, boolean pago) {
+        this.cliente = cliente;
+        this.itens = itens;
+        this.pago = pago;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public boolean isPago() {
+        return pago;
+    }
+
+    public double calcularTotal() {
+        return itens.stream()
+                .mapToDouble(Item::getValor)
+                .sum();
+    }
+}
